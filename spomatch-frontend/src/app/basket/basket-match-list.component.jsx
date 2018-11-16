@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import MatchItemComponent from '../../common/match-item.component';
+import BasketTabComponent from './basket-tab.component';
 
 const styles = theme => ({
     listBox: {
@@ -28,25 +27,44 @@ class BasketMatchListComponent extends Component {
 
     render() {
         const { classes } = this.props;
+        // match list
+        const matchList = [
+            {name: '매치1', value: 'enable'},
+            {name: '매치2', value: 'enable'},
+            {name: '매치3', value: 'enable'},
+            {name: '매치4', value: 'enable'},
+            {name: '매치5', value: 'enable'},
+            {name: '매치6', value: 'enable'},
+            {name: '매치7', value: 'enable'},
+            {name: '매치8', value: 'enable'},
+            {name: '매치2', value: 'enable'},
+            {name: '매치3', value: 'enable'},
+            {name: '매치4', value: 'enable'},
+            {name: '매치5', value: 'enable'},
+            {name: '매치6', value: 'enable'},
+            {name: '매치7', value: 'enable'},
+            {name: '매치8', value: 'enable'},
+            {name: '매치2', value: 'enable'},
+            {name: '매치3', value: 'enable'},
+            {name: '매치4', value: 'enable'},
+            {name: '매치5', value: 'enable'},
+            {name: '매치6', value: 'enable'},
+            {name: '매치7', value: 'enable'},
+            {name: '매치8', value: 'enable'},
+        ];
 
         return (
-            <List className={classes.listBox} subheader={<li />}>
-                {[0, 1, 2, 3, 4].map(sectionId => (
-                    <li key={`section-${sectionId}`} className={classes.listSection}>
-                        <ul className={classes.ul}>
-                            {/* list sub name */}
-                            <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
+            <div>
+                <BasketTabComponent/>
+                <List className={classes.listBox} subheader={<li />}>
+                    {matchList.map((item, index) => (
+                        <li className={classes.listSection} key={index}>
+                            <MatchItemComponent name={item.name}/>
+                        </li>
+                    ))}
+                </List>
+            </div>
 
-                            {/* list */}
-                            {[0, 1, 2].map(item => (
-                                <ListItem button key={`item-${sectionId}-${item}`}>
-                                    <ListItemText primary={`Item ${item}`} />
-                                </ListItem>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </List>
         );
     }
 }

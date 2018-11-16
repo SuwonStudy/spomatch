@@ -45,7 +45,7 @@ class BasketTabComponent extends Component {
                     textColor="primary"
                     onChange={this.onChangedTab}>
                     <Tab className={classes.tabItem} label="매칭" />
-                    <Tab className={classes.tabItem} label="구인/구직" disabled />
+                    <Tab className={classes.tabItem} label="구인/구직" />
                 </Tabs>
             </Paper>
         );
