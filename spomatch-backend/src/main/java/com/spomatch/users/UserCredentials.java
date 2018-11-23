@@ -12,15 +12,21 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Embeddable
 @Access(AccessType.FIELD)
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
+@ApiModel(description = "회원의 인증 정보를 표현하는 도메인 모델이다. id와 pw가 포함된다.")
 public class UserCredentials {
 
+	@ApiModelProperty("회원의 ID: 최소 5자여야 한다.")
 	@Length(min = 5, max = 30)
 	@NotBlank
 	private String idForLogin;
-	
+
+	@ApiModelProperty("회원의 비밀번호: 최소 8자여야 한다.")
 	@Length(min = 8)
 	@NotBlank
 	private String pw;

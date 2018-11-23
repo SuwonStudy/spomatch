@@ -26,6 +26,9 @@ import com.spomatch.players.support.PlayerIsALeaderOfAnyGroupException;
 import com.spomatch.players.support.PlayerOfSameSportsTypeAlreadyExistsException;
 import com.spomatch.players.support.PlayerOfTypeNotExistException;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 회원을 정의합니다.
  * 
@@ -38,8 +41,10 @@ import com.spomatch.players.support.PlayerOfTypeNotExistException;
 @Table(name = "users")
 @Access(AccessType.FIELD)
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
+@ApiModel(description = "회원을 표현하는 도메인 모델이다.")
 public class User implements Cloneable {
 
+	@ApiModelProperty("회원의 ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -55,6 +60,7 @@ public class User implements Cloneable {
 	/**
 	 * 회원은 여러 개의 선수 프로필을 가집니다.
 	 */
+	@ApiModelProperty("플레이어 목록을 나타낸다.")
 	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Player> players;
 

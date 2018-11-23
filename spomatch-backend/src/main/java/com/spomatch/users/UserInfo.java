@@ -16,17 +16,24 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.spomatch.common.Location;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Embeddable
 @Access(AccessType.FIELD)
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
+@ApiModel(description = "회원 정보를 표현하는 도메인 모델이다. 이름, 나이, 선호지역 등으로 구성된다.")
 public class UserInfo {
 
+	@ApiModelProperty("회원의 이름: 최소 2자여야 한다.")
 	@Length(min = 2, max = 30)
 	@NotBlank
 	private String name;
 
+	@ApiModelProperty("회원의 나이: (Optional)")
 	private int age;
 
+	@ApiModelProperty("회원의 선호지역 목록")
 	@ManyToMany
 	private List<Location> preferredLocations;
 
