@@ -18,8 +18,8 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spomatch.common.SportsType;
 import com.spomatch.players.Player;
 import com.spomatch.players.support.PlayerIsALeaderOfAnyGroupException;
@@ -28,6 +28,7 @@ import com.spomatch.players.support.PlayerOfTypeNotExistException;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty.AccessMode;
 
 /**
  * 회원을 정의합니다.
@@ -44,7 +45,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "회원을 표현하는 도메인 모델이다.")
 public class User implements Cloneable {
 
-	@ApiModelProperty("회원의 ID")
+	@ApiModelProperty(value = "회원의 ID", accessMode = AccessMode.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -60,7 +61,7 @@ public class User implements Cloneable {
 	/**
 	 * 회원은 여러 개의 선수 프로필을 가집니다.
 	 */
-	@ApiModelProperty("플레이어 목록을 나타낸다.")
+	@ApiModelProperty(value = "플레이어 목록을 나타낸다. (Optional)", required = false, example = "[]")
 	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Player> players;
 
