@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import GnbComponent from './gnb/gnb.component';
-import BasketMatchListComponent from './app/basket/basket-match-list.component';
+import BasketMatchListComponent from './basket/match/basket-match-list.component';
 
 class App extends Component {
   render() {

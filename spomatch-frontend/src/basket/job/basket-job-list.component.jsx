@@ -26,6 +26,10 @@ const styles = theme => ({
 
 class BasketJobListComponent extends Component {
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const { classes } = this.props;
 

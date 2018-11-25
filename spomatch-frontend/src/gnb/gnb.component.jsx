@@ -9,7 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import LnbComponent from "../lnb/lnb.component";
 
+// GNB에서 사용하는 style
 const styles = {
     root: {
         flexGrow: 1,
@@ -23,53 +25,79 @@ const styles = {
     },
 };
 
+/**
+ * name: Global navigation bar component
+ *
+ * description: 모든 페이지에서 최상단에 있는 네비게이션 바
+ *              종목을 선택할 수 있는 menu와 사용자 정보를 가지고있는 profile을 가지고 있음
+ */
 class GnbComponent extends Component {
     state = {
         auth: true,
         anchorEl: null,
+        isShowLnb: false
     };
 
     handleChange = event => {
         this.setState({ auth: event.target.checked });
     };
 
+
     handleMenu = event => {
         this.setState({ anchorEl: event.currentTarget });
     };
 
+    /**
+     * Menu close event
+     */
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
 
+    /**
+     * Lnb drawer close event
+     */
+    handleCloseLnb = () => {
+        this.setState({isShowLnb: null});
+    };
 
+    /**
+     * Lnb drawer open event
+     */
+    handleOpenLnb  = () => {
+        this.setState({ isShowLnb: true});
+    };
+
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const { classes } = this.props;
-        const { auth, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
+        const open = Boolean(this.state.anchorEl);
 
         return (
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar position="static" color="default">
                     <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                        <IconButton className={classes.menuButton} onClick={this.handleOpenLnb} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             Spomatch
                         </Typography>
-                        {auth && (
+                        {this.state.auth && (
                             <div>
                                 <IconButton
                                     aria-owns={open ? 'menu-appbar' : undefined}
                                     aria-haspopup="true"
                                     onClick={this.handleMenu}
-                                    color="inherit"
-                                >
+                                    color="inherit">
                                     <AccountCircle />
                                 </IconButton>
                                 <Menu
                                     id="menu-appbar"
-                                    anchorEl={anchorEl}
+                                    anchorEl={this.state.anchorEl}
                                     anchorOrigin={{
                                         vertical: 'top',
                                         horizontal: 'right',
@@ -79,8 +107,7 @@ class GnbComponent extends Component {
                                         horizontal: 'right',
                                     }}
                                     open={open}
-                                    onClose={this.handleClose}
-                                >
+                                    onClose={this.handleClose}>
                                     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
                                 </Menu>
@@ -88,6 +115,7 @@ class GnbComponent extends Component {
                         )}
                     </Toolbar>
                 </AppBar>
+                <LnbComponent isShowLnb={this.state.isShowLnb} onClosed={this.handleCloseLnb}/>
             </div>
         );
     };

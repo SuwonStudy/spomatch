@@ -29,6 +29,7 @@ class BasketTabComponent extends Component {
      */
     onChangedTab = (event, value) => {
         this.setState({ value });
+        // TODO router link
     };
 
     /**

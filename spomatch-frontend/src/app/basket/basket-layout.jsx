@@ -1,5 +1,0 @@
-
-
-class BasketLayout extends Component {
-
-}

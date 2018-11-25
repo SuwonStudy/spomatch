@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import MatchItemComponent from '../../common/match-item.component';
-import BasketTabComponent from './basket-tab.component';
+import BasketTabComponent from '../basket-tab.component';
 
 const styles = theme => ({
     listBox: {
@@ -25,6 +25,10 @@ const styles = theme => ({
 
 class BasketMatchListComponent extends Component {
 
+    /**
+     * Render
+     * @returns {XML}
+     */
     render() {
         const { classes } = this.props;
         // match list
@@ -55,7 +59,9 @@ class BasketMatchListComponent extends Component {
 
         return (
             <div>
+                {/* TAB */}
                 <BasketTabComponent/>
+                {/* LIST */}
                 <List className={classes.listBox} subheader={<li />}>
                     {matchList.map((item, index) => (
                         <li className={classes.listSection} key={index}>
