@@ -1,0 +1,70 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import ArrowBack  from '@material-ui/icons/ArrowBack';
+import MoreVert  from '@material-ui/icons/MoreVert';
+
+
+// style
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+    },
+});
+
+/**
+ * name : Detail navigation bar component
+ *
+ * description: 모든 상세화면의 상단에서 사용하는 navigation bar
+ *              해당 컴포넌트는 좌측에 back button, 우측에는 해당 글을 수정 및 삭제를 할 menu가 있다
+ */
+class DetailNavigationComponent extends Component {
+
+    /**
+     * Back button click event
+     */
+    handlerBackButton = () => {
+        // TODO 이전화면 으로 이동
+
+    };
+
+
+    handlerMenuButton = () => {
+        // TODO 이전화면 으로 이동
+
+    };
+
+    /**
+     * Render
+     * @returns {XML}
+     */
+    render() {
+        return (
+
+            const { classes } = this.props;
+
+            <div className={classes.root}>
+                <AppBar position="static" color="secondary">
+                    {/* back button */}
+                    <ArrowBack onClick={this.handlerBackButton}/>
+                    {/* title */}
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit">
+                            상세화면 TITLE
+                        </Typography>
+                    </Toolbar>
+                    {/* detail menu */}
+                    <MoreVert/>
+                </AppBar>
+            </div>
+        );
+    }
+}
+DetailNavigationComponent.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(DetailNavigationComponent);
