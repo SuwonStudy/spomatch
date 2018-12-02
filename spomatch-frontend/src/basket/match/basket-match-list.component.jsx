@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import MatchItemComponent from '../../common/match-item.component';
 import BasketTabComponent from '../basket-tab.component';
+import CreateMatchComponent from '../../common/create-match.component';
+import IconButton from "@material-ui/core/IconButton/IconButton";
 
 const styles = theme => ({
     listBox: {
@@ -58,9 +60,11 @@ class BasketMatchListComponent extends Component {
         ];
 
         return (
-            <div>
+            <Fragment>
                 {/* TAB */}
                 <BasketTabComponent/>
+                {/* create match */}
+                <CreateMatchComponent variant="fab" mode="BASKET"/>
                 {/* LIST */}
                 <List className={classes.listBox} subheader={<li />}>
                     {matchList.map((item, index) => (
@@ -69,7 +73,7 @@ class BasketMatchListComponent extends Component {
                         </li>
                     ))}
                 </List>
-            </div>
+            </Fragment>
 
         );
     }

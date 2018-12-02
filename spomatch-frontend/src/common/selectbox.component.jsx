@@ -6,9 +6,9 @@ const styles = {
 
 class SelectboxComponent extends Component {
 
-    handleClose() {
+    handleClose = () => {
 
-    }
+    };
 
     render() {
         return (

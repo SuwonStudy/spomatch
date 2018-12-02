@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { component, Fragment } from 'react';
 
 class BasketJobDetailComponent extends Component {
     /**
@@ -7,7 +7,9 @@ class BasketJobDetailComponent extends Component {
      */
     render() {
         return (
+            <Fragment>
 
+            </Fragment>
         );
     }
 }
