@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import {BasketMatchListComponent} from "../basket/match/basket-match-list.component";
+import Main from '../main';
+import BasketMatchListComponent from "../basket/match/basket-match-list.component";
 import {BasketJobListComponent} from "../basket/job/basket-job-list.component";
 
 /**
@@ -20,15 +21,16 @@ class Routes extends Component {
             <div className="view-routes">
                 <Switch>
                     {/* basket */}
+                    <Route exact path="/" component={Main} />
                     {/*<Route path="/basket/jobs" component={BasketJobListComponent}/>*/}
                     {/*<Route path="/basket/match" component={BasketMatchListComponent}/>*/}
                     {/*<Route path="/basket" component={BasketMatchListComponent}/>*/}
-                    <Route path="/basket" component={BasketModule}/>
+                    <Route path="/basket" component={BasketMatchListComponent}/>
                     {/* baseball */}
                     {/* soccer */}
 
 
-                    <Route path="/" component={BasketMatchListComponent}/>
+                    {/* <Route path="/" component={BasketMatchListComponent}/> */}
                 </Switch>
             </div>
         );
