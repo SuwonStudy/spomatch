@@ -68,7 +68,6 @@ class BasketCreateComponent extends Component {
                     }}/>
                 {/* 장소 */}
                 <TextField
-                    disabled
                     id="match-place"
                     label="장소"
                     className={classes.textField}
@@ -77,7 +76,8 @@ class BasketCreateComponent extends Component {
                         shrink: true,
                     }}
                     InputProps={{
-                        endAdornment: (
+                        readOnly: true
+                        ,endAdornment: (
                             <InputAdornment variant="filled" position="end">
                                 <IconButton
                                     aria-label="매칭 장소 검색"

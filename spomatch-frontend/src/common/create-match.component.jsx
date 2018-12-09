@@ -66,9 +66,9 @@ class CreateMatchComponent extends Component {
         // TODO call create api
         // callback close
         this.handleClose();
-        this.testAPI()
-            .then(result => AlertUtil.success('매칭이 생성되었습니다'))
-            .catch(error => AlertUtil.error('실패'));
+        // this.testAPI()
+        //     .then(result => AlertUtil.success('매칭이 생성되었습니다'))
+        //     .catch(error => AlertUtil.error('실패'));
         // alert
         AlertUtil.success('매칭이 생성되었습니다');
     };
